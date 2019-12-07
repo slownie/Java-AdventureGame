@@ -10,14 +10,15 @@ import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
+import maps.Map1;
+
+import props.NPC;
 
 public class Main implements KeyListener
 {
-
     //Window Variables:
     JFrame frame;
     DrawingPanel drPanel;
-
 
     public static void main (String args[])
     {
@@ -35,11 +36,17 @@ public class Main implements KeyListener
 
         //DrawingPanel Setup:
         drPanel = new DrawingPanel();
+        drPanel.addKeyListener(this);
+
+        //Map Setup:
+        Map1 map1 = new Map1();
+        map1.addProps();
 
         frame.add(drPanel);
         frame.setVisible(true);
 
         Timer gameTimer = new Timer(120, new TimerListener());
+        gameTimer.start();
     }
 
     /*Classes used in the Program */
@@ -54,7 +61,8 @@ public class Main implements KeyListener
         public void paintComponent(Graphics g)
         {
             super.paintComponent(g);
-            drawTitleScreen(g);
+            this.requestFocus();
+
         }
     }
 
