@@ -23,7 +23,7 @@ public class Main implements KeyListener
     DrawingPanel drPanel;
 
     //Player Variables:
-    Player py = new Player(100, 100);
+    Player py = new Player(100, 100, 2);
     public static boolean W, A, S, D = false;
 
     public static void main (String args[])
@@ -48,7 +48,7 @@ public class Main implements KeyListener
         Map1 map1 = new Map1();
         map1.addProps();
 
-        Timer gameTimer = new Timer(60, new TimerListener());
+        Timer gameTimer = new Timer(100, new TimerListener());
         gameTimer.start();
 
         frame.add(drPanel);
@@ -91,6 +91,7 @@ public class Main implements KeyListener
         if (S) { py.y += 3; }
         if (D) { py.x += 3; }
     }
+
     public void drawTitleScreen(Graphics g)
     {
         g.setColor(Color.WHITE);
