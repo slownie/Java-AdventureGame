@@ -14,11 +14,17 @@ import maps.Map1;
 
 import props.NPC;
 
+import game.Player;
+
 public class Main implements KeyListener
 {
     //Window Variables:
     JFrame frame;
     DrawingPanel drPanel;
+
+    //Player Variables:
+    Player py = new Player(100, 100, 2);
+    public static boolean W, A, S, D = false;
 
     public static void main (String args[])
     {
@@ -42,11 +48,11 @@ public class Main implements KeyListener
         Map1 map1 = new Map1();
         map1.addProps();
 
+        Timer gameTimer = new Timer(100, new TimerListener());
+        gameTimer.start();
+
         frame.add(drPanel);
         frame.setVisible(true);
-
-        Timer gameTimer = new Timer(120, new TimerListener());
-        gameTimer.start();
     }
 
     /*Classes used in the Program */
@@ -63,6 +69,7 @@ public class Main implements KeyListener
             super.paintComponent(g);
             this.requestFocus();
 
+            py.drawPlayer(g, py.x, py.y);
         }
     }
 
@@ -71,11 +78,20 @@ public class Main implements KeyListener
         @Override
         public void actionPerformed(ActionEvent e)
         {
-
+            readInputs();
+            frame.repaint();
         }
     }
 
     /*Methods used in the Program */
+    public void readInputs()
+    {
+        if (W) { py.y -= 3; }
+        if (A) { py.x -= 3; }
+        if (S) { py.y += 3; }
+        if (D) { py.x += 3; }
+    }
+
     public void drawTitleScreen(Graphics g)
     {
         g.setColor(Color.WHITE);
@@ -86,13 +102,19 @@ public class Main implements KeyListener
     @Override
     public void keyPressed(KeyEvent e)
     {
-
+        if (e.getKeyCode()==KeyEvent.VK_W) W = true;
+        if (e.getKeyCode()==KeyEvent.VK_A) A = true;
+        if (e.getKeyCode()==KeyEvent.VK_S) S = true;
+        if (e.getKeyCode()==KeyEvent.VK_D) D = true;
     }
 
     @Override
     public void keyReleased(KeyEvent e)
     {
-
+        if (e.getKeyCode()==KeyEvent.VK_W) W = false;
+        if (e.getKeyCode()==KeyEvent.VK_A) A = false;
+        if (e.getKeyCode()==KeyEvent.VK_S) S = false;
+        if (e.getKeyCode()==KeyEvent.VK_D) D = false;
     }
 
     @Override
