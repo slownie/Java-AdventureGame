@@ -2,12 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c353b1e9-0de7-4cbc-908f-072b4d6480ac" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/inventory/Item.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/inventory/Weapon.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/maps/Map1.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/props/NPC.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/game/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/game/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/inventory/Item.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/inventory/Item.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/inventory/Weapon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/inventory/Weapon.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
