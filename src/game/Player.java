@@ -4,6 +4,7 @@ import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.awt.Color;
 
+@SuppressWarnings("serial")
 public class Player extends Rectangle
 {
     int x;
