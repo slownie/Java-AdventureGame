@@ -1,0 +1,4 @@
+gameState:
+0 = Title Screen
+1 = Loading Screen
+2 = Gameplay

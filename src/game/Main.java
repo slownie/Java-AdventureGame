@@ -12,8 +12,6 @@ import java.awt.event.KeyListener;
 
 import maps.Map1;
 
-import props.NPC;
-
 import game.Player;
 
 public class Main implements KeyListener
@@ -22,9 +20,12 @@ public class Main implements KeyListener
     JFrame frame;
     DrawingPanel drPanel;
 
+    //Game Flow Variables:
+    static int gameState = 0;
+    
     //Player Variables:
     Player py = new Player(100, 100, 2);
-    public static boolean W, A, S, D = false;
+    public static boolean W, A, S, D, J, K, ENTER = false;
 
     public static void main (String args[])
     {
@@ -69,7 +70,22 @@ public class Main implements KeyListener
             super.paintComponent(g);
             this.requestFocus();
 
-            py.drawPlayer(g, py.x, py.y);
+            switch (gameState)
+            {	
+            	//Title Screen:
+            	case 0:
+            		drawTitleScreen(g);
+            		break;
+        		
+        		//Loading:
+            	case 1:
+            		drawLoadingScreen(g);
+                    break;
+                
+                //Gameplay:
+            	case 2:
+            		break;
+            }
         }
     }
 
@@ -86,17 +102,37 @@ public class Main implements KeyListener
     /*Methods used in the Program */
     public void readInputs()
     {
-        if (W) { py.y -= 3; }
-        if (A) { py.x -= 3; }
-        if (S) { py.y += 3; }
-        if (D) { py.x += 3; }
+    	//Only occurs when gameplay is enabled:
+    	if (gameState == 2)
+    	{
+    		//Movement:
+    		if (W) { py.y -= 3; }
+            if (A) { py.x -= 3; }
+            if (S) { py.y += 3; }
+            if (D) { py.x += 3; }
+            
+            //Button Presses:
+            if (J) { System.out.println("Who are you talking to?"); }
+    	}
+        
+        /*Special Cases:*/
+        
+        //ONLY ON THE TITLESCREEN - transitions to a loading screen before loading the game:
+        if (gameState == 0 && ENTER) gameState = 1;
     }
 
+    //Add more to this later:
     public void drawTitleScreen(Graphics g)
     {
         g.setColor(Color.WHITE);
         g.drawString("Text Adventure Game", 135, 150);
         g.drawString("Press Enter", 155, 250);
+    }
+    
+    //Blank Screen for now, might put something else here later:
+    public void drawLoadingScreen(Graphics g)
+    {
+    	
     }
 
     @Override
@@ -106,6 +142,9 @@ public class Main implements KeyListener
         if (e.getKeyCode()==KeyEvent.VK_A) A = true;
         if (e.getKeyCode()==KeyEvent.VK_S) S = true;
         if (e.getKeyCode()==KeyEvent.VK_D) D = true;
+        if (e.getKeyCode()==KeyEvent.VK_J) J = true;
+        if (e.getKeyCode()==KeyEvent.VK_K) K = true;
+        if (e.getKeyCode()==KeyEvent.VK_ENTER) ENTER = true;
     }
 
     @Override
@@ -115,6 +154,9 @@ public class Main implements KeyListener
         if (e.getKeyCode()==KeyEvent.VK_A) A = false;
         if (e.getKeyCode()==KeyEvent.VK_S) S = false;
         if (e.getKeyCode()==KeyEvent.VK_D) D = false;
+        if (e.getKeyCode()==KeyEvent.VK_J) J = false;
+        if (e.getKeyCode()==KeyEvent.VK_K) K = false;
+        if (e.getKeyCode()==KeyEvent.VK_ENTER) ENTER = false;
     }
 
     @Override
