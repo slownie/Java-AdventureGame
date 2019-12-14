@@ -84,6 +84,7 @@ public class Main implements KeyListener
                 
                 //Gameplay:
             	case 2:
+            	    py.drawPlayer(g, py.x, py.y);
             		break;
             }
         }
@@ -117,8 +118,8 @@ public class Main implements KeyListener
         
         /*Special Cases:*/
         
-        //ONLY ON THE TITLESCREEN - transitions to a loading screen before loading the game:
-        if (gameState == 0 && ENTER) gameState = 1;
+        //ONLY ON THE TITLESCREEN - transitions to gameplay:
+        if (gameState == 0 && ENTER) gameState = 2;
     }
 
     //Add more to this later:
@@ -129,10 +130,11 @@ public class Main implements KeyListener
         g.drawString("Press Enter", 155, 250);
     }
     
-    //Blank Screen for now, might put something else here later:
+    //Blank Screen with text for now, might put something else here later:
     public void drawLoadingScreen(Graphics g)
     {
-    	
+    	g.setColor(Color.WHITE);
+    	g.drawString("Loading...", 135, 150);
     }
 
     @Override
