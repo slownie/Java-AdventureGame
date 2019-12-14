@@ -17,8 +17,9 @@ public class NPC extends Rectangle
         this.y = y;
     }
 
-    public void drawNPC(Graphics g, int x, int y)
+    public void drawNPC(Graphics g, Color c, int x, int y)
     {
+        g.setColor(c);
         g.fillRect(x, y, 20, 20);
     }
 

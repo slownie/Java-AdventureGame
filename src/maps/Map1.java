@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public class Map1
 {
-    public ArrayList<NPC> npcs = new ArrayList<NPC>();
+    public static ArrayList<NPC> npcs = new ArrayList<NPC>();
 
     public void addProps()
     {

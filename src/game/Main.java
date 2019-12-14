@@ -13,6 +13,7 @@ import java.awt.event.KeyListener;
 import maps.Map1;
 
 import game.Player;
+import props.NPC;
 
 public class Main implements KeyListener
 {
@@ -85,6 +86,7 @@ public class Main implements KeyListener
                 //Gameplay:
             	case 2:
             	    py.drawPlayer(g, py.x, py.y);
+            	    for (NPC n : Map1.npcs) n.drawNPC(g, Color.RED, 30, 30);
             		break;
             }
         }
@@ -107,10 +109,10 @@ public class Main implements KeyListener
     	if (gameState == 2)
     	{
     		//Movement:
-    		if (W) { py.y -= 3; }
-            if (A) { py.x -= 3; }
-            if (S) { py.y += 3; }
-            if (D) { py.x += 3; }
+    		if (W) { py.y -= 1; }
+            if (A) { py.x -= 1; }
+            if (S) { py.y += 1; }
+            if (D) { py.x += 1; }
             
             //Button Presses:
             if (J) { System.out.println("Who are you talking to?"); }
